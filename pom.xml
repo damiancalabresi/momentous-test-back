@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.dcalabresi.momentous</groupId>
-	<artifactId>momentous.test.back</artifactId>
+	<artifactId>momentous-test-back</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
