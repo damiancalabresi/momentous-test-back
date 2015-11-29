@@ -4,11 +4,13 @@ En la raíz del proyecto ejecutar
 > mvn spring-boot:run
 Esto compilará y ejecutara el plugin de Spring Boot
 
-Si no se puede ejecutar
+Si no, se puede ejecutar
 > mvn clean install -Dmaven.test.skip=true
+
 > java -jar target/momentous.test.back-1.0.0.jar
 
 También se puede importar el proyecto con Intellij IDEA o Eclipse y ejecutar la función Main en la clase Application.java
+
 En el caso de Eclipse, de estar instalado Spring Tool Suite, se puede ejecutar como un proyecto de Spring Boot
 
 ## Probar
