@@ -1,5 +1,6 @@
 # momentous-test-back
 ## Ejecutar
+
 En la raíz del proyecto ejecutar
 > mvn spring-boot:run
 Esto compilará y ejecutara el plugin de Spring Boot
@@ -12,6 +13,10 @@ Si no, se puede ejecutar
 También se puede importar el proyecto con Intellij IDEA o Eclipse y ejecutar la función Main en la clase Application.java
 
 En el caso de Eclipse, de estar instalado Spring Tool Suite, se puede ejecutar como un proyecto de Spring Boot
+
+Si no se tiene Maven, hay una versión compilada en el directorio binary. Para ejecutarla:
+
+> java -jar binary/momentous-test-back.jar
 
 ## Probar servicios
 Ir a:
