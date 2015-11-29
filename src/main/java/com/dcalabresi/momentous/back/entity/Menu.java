@@ -2,6 +2,7 @@ package com.dcalabresi.momentous.back.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by damian on 11/29/15.
@@ -35,6 +36,11 @@ public class Menu {
     @Column(name="to_valid_date", nullable = false)
     private Date toValidDate;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "menu_day", joinColumns = @JoinColumn(name = "menu_id"))
+    @Column(name="day")
+    private List<String> days;
+
     @Temporal(TemporalType.TIME)
     @Column(name="from_hour", nullable = false)
     private Date fromHour;
@@ -50,13 +56,14 @@ public class Menu {
     }
 
     public Menu(String name, String description, Float price, Currency currency, Date fromValidDate,
-                Date toValidDate, Date fromHour, Date toHour, Float ranking) {
+                Date toValidDate, List<String> days, Date fromHour, Date toHour, Float ranking) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.currency = currency;
         this.fromValidDate = fromValidDate;
         this.toValidDate = toValidDate;
+        this.days = days;
         this.fromHour = fromHour;
         this.toHour = toHour;
         this.ranking = ranking;
@@ -116,6 +123,14 @@ public class Menu {
 
     public void setToValidDate(Date toValidDate) {
         this.toValidDate = toValidDate;
+    }
+
+    public List<String> getDays() {
+        return days;
+    }
+
+    public void setDays(List<String> days) {
+        this.days = days;
     }
 
     public Date getFromHour() {
