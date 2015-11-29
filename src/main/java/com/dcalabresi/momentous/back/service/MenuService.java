@@ -21,11 +21,50 @@ public class MenuService {
     MenuRepository menuRepository;
 
     @Autowired
-    CurrencyRepository currencyRepository;
+    CurrencyService currencyService;
 
     @Transactional
     public List<Menu> getAll() {
         return menuRepository.findAll();
+    }
+
+    @Transactional
+    public Menu getOne(Long id) {
+        return menuRepository.findOne(id);
+    }
+
+    @Transactional
+    public Menu edit(Long id, String name, String description, Float price, Long currencyId, Date fromValidDate,
+                     Date toValidDate, Date fromHour, Date toHour, Float ranking) {
+        Menu menu = getOne(id);
+        return editAndSave(name, description, price, currencyId, fromValidDate, toValidDate, fromHour, toHour,
+                ranking, menu);
+    }
+
+    public Menu create(String name, String description, Float price, Long currencyId, Date fromValidDate,
+                       Date toValidDate, Date fromHour, Date toHour, Float ranking) {
+        Menu menu = new Menu();
+        return editAndSave(name, description, price, currencyId, fromValidDate, toValidDate, fromHour, toHour,
+                ranking, menu);
+    }
+
+    private Menu editAndSave(String name, String description, Float price, Long currencyId, Date fromValidDate, Date toValidDate, Date fromHour, Date toHour, Float ranking, Menu menu) {
+        menu.setName(name);
+        menu.setDescription(description);
+        menu.setPrice(price);
+        Currency currency = currencyService.getOne(currencyId);
+        menu.setCurrency(currency);
+        menu.setFromValidDate(fromValidDate);
+        menu.setToValidDate(toValidDate);
+        menu.setFromHour(fromHour);
+        menu.setToHour(toHour);
+        menu.setRanking(ranking);
+        return menuRepository.save(menu);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        menuRepository.delete(id);
     }
 
 }

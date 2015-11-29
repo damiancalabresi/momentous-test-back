@@ -25,4 +25,27 @@ public class CurrencyService {
         return currencyRepository.findAll();
     }
 
+    @Transactional
+    public Currency getOne(Long id) {
+        return currencyRepository.findOne(id);
+    }
+
+    @Transactional
+    public Currency edit(Long id, String name) {
+        Currency currency = getOne(id);
+        currency.setName(name);
+        return currencyRepository.save(currency);
+    }
+
+    @Transactional
+    public Currency create(String name) {
+        Currency currency = new Currency(name);
+        return currencyRepository.save(currency);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        currencyRepository.delete(id);
+    }
+
 }
