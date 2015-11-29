@@ -11,7 +11,7 @@ INSERT INTO menu_day(menu_id, day) VALUES(1, 'thursday');
 INSERT INTO menu_day(menu_id, day) VALUES(1, 'friday');
 
 INSERT INTO menu(id, name, description, price, currency, from_valid_date, to_valid_date, from_hour, from_minute, to_hour, to_minute, ranking)
-VALUES (2, 'Classic Burguer', 'A fresh meat burguer with lettuce, tommato and onion', 7.50, 1, DATE '2015-08-15', DATE '2016-08-15', 12, 0, 22, 0, 4.5);
+VALUES (2, 'Classic Burger', 'A fresh meat burger with lettuce, tommato and onion', 7.50, 1, DATE '2015-08-15', DATE '2016-08-15', 12, 0, 22, 0, 4.5);
 
 INSERT INTO menu_day(menu_id, day) VALUES(2, 'saturday');
 INSERT INTO menu_day(menu_id, day) VALUES(2, 'sunday');
