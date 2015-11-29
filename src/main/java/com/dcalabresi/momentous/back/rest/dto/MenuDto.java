@@ -1,32 +1,50 @@
 package com.dcalabresi.momentous.back.rest.dto;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
 public class MenuDto {
 
+    @NotEmpty(message = "Cannot be empty")
     private String name;
 
+    @NotEmpty(message = "Cannot be empty")
     private String description;
 
+    @Min(value = 0, message = "Price must be greater than zero")
     private Float price;
 
+    @NotNull(message = "Id cannot be null")
+    @Min(value=1, message = "Id cannot be null")
     private Long currencyId;
 
+    @NotNull(message = "The date cannot be null")
     private Date fromValidDate;
 
+    @NotNull(message = "The date cannot be null")
     private Date toValidDate;
 
+    @Range(min = 0, max = 23, message = "Hour must be between 0 and 23")
     private Integer fromHour;
 
+    @Range(min = 0, max = 59, message = "Minute must be between 0 and 59")
     private Integer fromMinute;
 
+    @Range(min = 0, max = 23, message = "Hour must be between 0 and 23")
     private Integer toHour;
 
+    @Range(min = 0, max = 59, message = "Minute must be between 0 and 59")
     private Integer toMinute;
 
+    @Range(min=0, max= 5, message = "Ranking must be between 0 and 5")
     private Float ranking;
 
+    @NotNull(message = "The days list cannot be null")
     private List<String> days;
 
     public MenuDto() {

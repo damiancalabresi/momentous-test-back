@@ -1,7 +1,10 @@
 package com.dcalabresi.momentous.back.rest.dto;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class CurrencyDto {
 
+    @NotEmpty(message = "Cannot be empty")
     private String name;
 
     public CurrencyDto() {

@@ -1,14 +1,13 @@
 package com.dcalabresi.momentous.back.service;
 
 import com.dcalabresi.momentous.back.entity.Currency;
-import com.dcalabresi.momentous.back.entity.Menu;
 import com.dcalabresi.momentous.back.repository.CurrencyRepository;
-import com.dcalabresi.momentous.back.repository.MenuRepository;
+import com.dcalabresi.momentous.back.service.exception.CurrencyDoesNotExistException;
+import com.dcalabresi.momentous.back.service.exception.ValidationErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,7 +26,9 @@ public class CurrencyService {
 
     @Transactional
     public Currency getOne(Long id) {
-        return currencyRepository.findOne(id);
+        Currency currency = currencyRepository.findOne(id);
+        if(currency==null) throw new CurrencyDoesNotExistException();
+        return currency;
     }
 
     @Transactional

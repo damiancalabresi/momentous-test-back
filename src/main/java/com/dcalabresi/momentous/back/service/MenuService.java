@@ -3,6 +3,8 @@ package com.dcalabresi.momentous.back.service;
 import com.dcalabresi.momentous.back.entity.Currency;
 import com.dcalabresi.momentous.back.entity.Menu;
 import com.dcalabresi.momentous.back.repository.MenuRepository;
+import com.dcalabresi.momentous.back.service.exception.MenuDoesNotExistException;
+import com.dcalabresi.momentous.back.service.exception.ValidationErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +31,9 @@ public class MenuService {
 
     @Transactional
     public Menu getOne(Long id) {
-        return menuRepository.findOne(id);
+        Menu menu = menuRepository.findOne(id);
+        if(menu==null) throw new MenuDoesNotExistException();
+        return menu;
     }
 
     @Transactional
