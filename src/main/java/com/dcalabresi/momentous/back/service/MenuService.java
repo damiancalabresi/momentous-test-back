@@ -4,7 +4,6 @@ import com.dcalabresi.momentous.back.entity.Currency;
 import com.dcalabresi.momentous.back.entity.Menu;
 import com.dcalabresi.momentous.back.repository.MenuRepository;
 import com.dcalabresi.momentous.back.service.exception.MenuDoesNotExistException;
-import com.dcalabresi.momentous.back.service.exception.ValidationErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +26,16 @@ public class MenuService {
     @Transactional
     public List<Menu> getAll() {
         return menuRepository.findAll();
+    }
+
+    @Transactional
+    public List<Menu> getByPrice(Float priceFrom, Float priceTo, Long currencyId) {
+        return menuRepository.findByPriceAndCurrency(priceFrom, priceTo, currencyId);
+    }
+
+    @Transactional
+    public List<Menu> getByRanking(Float rankingFrom, Float rankingTo) {
+        return menuRepository.findByRanking(rankingFrom, rankingTo);
     }
 
     @Transactional

@@ -2,6 +2,8 @@ package com.dcalabresi.momentous.back.rest.controller;
 
 import com.dcalabresi.momentous.back.entity.Menu;
 import com.dcalabresi.momentous.back.rest.dto.MenuDto;
+import com.dcalabresi.momentous.back.rest.dto.PriceDto;
+import com.dcalabresi.momentous.back.rest.dto.RankingDto;
 import com.dcalabresi.momentous.back.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,16 @@ public class MenuController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Menu> getAll() {
         return menuService.getAll();
+    }
+
+    @RequestMapping(value = "/filter/price", method = RequestMethod.POST)
+    public List<Menu> getByPrice(@RequestBody @Valid PriceDto priceDto) {
+        return menuService.getByPrice(priceDto.getPriceFrom(), priceDto.getPriceTo(), priceDto.getCurrencyId());
+    }
+
+    @RequestMapping(value = "/filter/ranking", method = RequestMethod.POST)
+    public List<Menu> getByRanking(@RequestBody @Valid RankingDto rankingDto) {
+        return menuService.getByRanking(rankingDto.getRankingFrom(), rankingDto.getRankingTo());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
