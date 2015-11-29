@@ -25,9 +25,4 @@ public class MenuController {
         return menuService.getAll();
     }
 
-    @RequestMapping(value = "/one", method = RequestMethod.GET)
-    public void putOne() {
-        menuService.putOne();
-    }
-
 }

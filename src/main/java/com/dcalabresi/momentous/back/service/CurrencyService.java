@@ -6,6 +6,7 @@ import com.dcalabresi.momentous.back.repository.CurrencyRepository;
 import com.dcalabresi.momentous.back.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,7 @@ public class CurrencyService {
     @Autowired
     CurrencyRepository currencyRepository;
 
+    @Transactional
     public List<Currency> getAll() {
         return currencyRepository.findAll();
     }

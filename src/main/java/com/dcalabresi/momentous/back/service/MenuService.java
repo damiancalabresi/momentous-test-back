@@ -28,11 +28,4 @@ public class MenuService {
         return menuRepository.findAll();
     }
 
-    @Transactional
-    public void putOne() {
-        Currency currency = new Currency("Dollar");
-        currencyRepository.save(currency);
-        Menu menu = new Menu("Risotto", "A Risotto", 5.0f, currency, new Date(), new Date(), new Date(), new Date(), 4.0f);
-        menuRepository.save(menu);
-    }
 }

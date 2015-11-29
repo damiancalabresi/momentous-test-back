@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by damian on 11/29/15.
  */
-@Entity
+@Entity(name = "menu")
 public class Menu {
 
     @Id
