@@ -1,0 +1,38 @@
+package com.dcalabresi.momentous.back.service;
+
+import com.dcalabresi.momentous.back.entity.Currency;
+import com.dcalabresi.momentous.back.entity.Menu;
+import com.dcalabresi.momentous.back.repository.CurrencyRepository;
+import com.dcalabresi.momentous.back.repository.MenuRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by damian on 11/29/15.
+ */
+@Service
+public class MenuService {
+
+    @Autowired
+    MenuRepository menuRepository;
+
+    @Autowired
+    CurrencyRepository currencyRepository;
+
+    @Transactional
+    public List<Menu> getAll() {
+        return menuRepository.findAll();
+    }
+
+    @Transactional
+    public void putOne() {
+        Currency currency = new Currency("Dollar");
+        currencyRepository.save(currency);
+        Menu menu = new Menu("Risotto", "A Risotto", 5.0f, currency, new Date(), new Date(), new Date(), new Date(), 4.0f);
+        menuRepository.save(menu);
+    }
+}

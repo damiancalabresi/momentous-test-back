@@ -1,7 +1,7 @@
 package com.dcalabresi.momentous.back.rest;
 
-import com.dcalabresi.momentous.back.entity.Menu;
-import com.dcalabresi.momentous.back.service.MenuService;
+import com.dcalabresi.momentous.back.entity.Currency;
+import com.dcalabresi.momentous.back.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,20 +14,15 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/menu")
-public class MenuController {
+@RequestMapping("/currency")
+public class CurrencyController {
 
     @Autowired
-    MenuService menuService;
+    CurrencyService currencyService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Menu> getAll() {
-        return menuService.getAll();
-    }
-
-    @RequestMapping(value = "/one", method = RequestMethod.GET)
-    public void putOne() {
-        menuService.putOne();
+    public List<Currency> getAll() {
+        return currencyService.getAll();
     }
 
 }
