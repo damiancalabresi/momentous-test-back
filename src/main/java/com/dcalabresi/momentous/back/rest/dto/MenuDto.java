@@ -1,6 +1,7 @@
 package com.dcalabresi.momentous.back.rest.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class MenuDto {
 
@@ -16,26 +17,19 @@ public class MenuDto {
 
     private Date toValidDate;
 
-    private Date fromHour;
+    private Integer fromHour;
 
-    private Date toHour;
+    private Integer fromMinute;
+
+    private Integer toHour;
+
+    private Integer toMinute;
 
     private Float ranking;
 
-    public MenuDto() {
-    }
+    private List<String> days;
 
-    public MenuDto(String name, String description, Float price, Long currencyId, Date fromValidDate,
-                   Date toValidDate, Date fromHour, Date toHour, Float ranking) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.currencyId = currencyId;
-        this.fromValidDate = fromValidDate;
-        this.toValidDate = toValidDate;
-        this.fromHour = fromHour;
-        this.toHour = toHour;
-        this.ranking = ranking;
+    public MenuDto() {
     }
 
     public String getName() {
@@ -86,20 +80,36 @@ public class MenuDto {
         this.toValidDate = toValidDate;
     }
 
-    public Date getFromHour() {
+    public Integer getFromHour() {
         return fromHour;
     }
 
-    public void setFromHour(Date fromHour) {
+    public void setFromHour(Integer fromHour) {
         this.fromHour = fromHour;
     }
 
-    public Date getToHour() {
+    public Integer getFromMinute() {
+        return fromMinute;
+    }
+
+    public void setFromMinute(Integer fromMinute) {
+        this.fromMinute = fromMinute;
+    }
+
+    public Integer getToHour() {
         return toHour;
     }
 
-    public void setToHour(Date toHour) {
+    public void setToHour(Integer toHour) {
         this.toHour = toHour;
+    }
+
+    public Integer getToMinute() {
+        return toMinute;
+    }
+
+    public void setToMinute(Integer toMinute) {
+        this.toMinute = toMinute;
     }
 
     public Float getRanking() {
@@ -108,6 +118,14 @@ public class MenuDto {
 
     public void setRanking(Float ranking) {
         this.ranking = ranking;
+    }
+
+    public List<String> getDays() {
+        return days;
+    }
+
+    public void setDays(List<String> days) {
+        this.days = days;
     }
 
 }

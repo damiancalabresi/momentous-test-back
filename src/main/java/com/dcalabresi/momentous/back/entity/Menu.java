@@ -41,13 +41,17 @@ public class Menu {
     @Column(name="day")
     private List<String> days;
 
-    @Temporal(TemporalType.TIME)
     @Column(name="from_hour", nullable = false)
-    private Date fromHour;
+    private Integer fromHour;
 
-    @Temporal(TemporalType.TIME)
+    @Column(name="from_minute", nullable = false)
+    private Integer fromMinute;
+
     @Column(name="to_hour", nullable = false)
-    private Date toHour;
+    private Integer toHour;
+
+    @Column(name="to_minute", nullable = false)
+    private Integer toMinute;
 
     @Column(name = "ranking", nullable = false)
     private Float ranking;
@@ -56,7 +60,8 @@ public class Menu {
     }
 
     public Menu(String name, String description, Float price, Currency currency, Date fromValidDate,
-                Date toValidDate, List<String> days, Date fromHour, Date toHour, Float ranking) {
+                Date toValidDate, List<String> days, Integer fromHour, Integer fromMinute, Integer toHour,
+                Integer toMinute, Float ranking) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -65,7 +70,9 @@ public class Menu {
         this.toValidDate = toValidDate;
         this.days = days;
         this.fromHour = fromHour;
+        this.fromMinute = fromMinute;
         this.toHour = toHour;
+        this.toMinute = toMinute;
         this.ranking = ranking;
     }
 
@@ -133,20 +140,36 @@ public class Menu {
         this.days = days;
     }
 
-    public Date getFromHour() {
+    public Integer getFromHour() {
         return fromHour;
     }
 
-    public void setFromHour(Date fromHour) {
+    public void setFromHour(Integer fromHour) {
         this.fromHour = fromHour;
     }
 
-    public Date getToHour() {
+    public Integer getFromMinute() {
+        return fromMinute;
+    }
+
+    public void setFromMinute(Integer fromMinute) {
+        this.fromMinute = fromMinute;
+    }
+
+    public Integer getToHour() {
         return toHour;
     }
 
-    public void setToHour(Date toHour) {
+    public void setToHour(Integer toHour) {
         this.toHour = toHour;
+    }
+
+    public Integer getToMinute() {
+        return toMinute;
+    }
+
+    public void setToMinute(Integer toMinute) {
+        this.toMinute = toMinute;
     }
 
     public Float getRanking() {

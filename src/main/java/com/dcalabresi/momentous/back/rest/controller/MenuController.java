@@ -34,14 +34,14 @@ public class MenuController {
     public Menu createMenu(@RequestBody @Valid MenuDto menuDto) {
         return menuService.create(menuDto.getName(), menuDto.getDescription(), menuDto.getPrice(),
                 menuDto.getCurrencyId(), menuDto.getFromValidDate(), menuDto.getToValidDate(), menuDto.getFromHour(),
-                menuDto.getToHour(), menuDto.getRanking());
+                menuDto.getFromMinute(), menuDto.getToHour(), menuDto.getToMinute(), menuDto.getRanking(), menuDto.getDays());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Menu editMenu(@PathVariable Long id, @RequestBody @Valid MenuDto menuDto) {
         return menuService.edit(id, menuDto.getName(), menuDto.getDescription(), menuDto.getPrice(),
                 menuDto.getCurrencyId(), menuDto.getFromValidDate(), menuDto.getToValidDate(), menuDto.getFromHour(),
-                menuDto.getToHour(), menuDto.getRanking());
+                menuDto.getFromMinute(), menuDto.getToHour(), menuDto.getToMinute(), menuDto.getRanking(), menuDto.getDays());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

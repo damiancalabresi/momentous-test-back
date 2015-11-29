@@ -2,7 +2,6 @@ package com.dcalabresi.momentous.back.service;
 
 import com.dcalabresi.momentous.back.entity.Currency;
 import com.dcalabresi.momentous.back.entity.Menu;
-import com.dcalabresi.momentous.back.repository.CurrencyRepository;
 import com.dcalabresi.momentous.back.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,20 +34,25 @@ public class MenuService {
 
     @Transactional
     public Menu edit(Long id, String name, String description, Float price, Long currencyId, Date fromValidDate,
-                     Date toValidDate, Date fromHour, Date toHour, Float ranking) {
+                     Date toValidDate, Integer fromHour, Integer fromMinute, Integer toHour, Integer toMinute,
+                     Float ranking, List<String> days) {
         Menu menu = getOne(id);
-        return editAndSave(name, description, price, currencyId, fromValidDate, toValidDate, fromHour, toHour,
-                ranking, menu);
+        return editAndSave(name, description, price, currencyId, fromValidDate, toValidDate, fromHour,
+                fromMinute, toHour, toMinute, ranking, days, menu);
     }
 
+    @Transactional
     public Menu create(String name, String description, Float price, Long currencyId, Date fromValidDate,
-                       Date toValidDate, Date fromHour, Date toHour, Float ranking) {
+                       Date toValidDate, Integer fromHour, Integer fromMinute, Integer toHour, Integer toMinute,
+                       Float ranking, List<String> days) {
         Menu menu = new Menu();
-        return editAndSave(name, description, price, currencyId, fromValidDate, toValidDate, fromHour, toHour,
-                ranking, menu);
+        return editAndSave(name, description, price, currencyId, fromValidDate, toValidDate, fromHour,
+                fromMinute, toHour, toMinute, ranking, days, menu);
     }
 
-    private Menu editAndSave(String name, String description, Float price, Long currencyId, Date fromValidDate, Date toValidDate, Date fromHour, Date toHour, Float ranking, Menu menu) {
+    private Menu editAndSave(String name, String description, Float price, Long currencyId, Date fromValidDate,
+                             Date toValidDate, Integer fromHour, Integer fromMinute, Integer toHour, Integer toMinute,
+                             Float ranking, List<String> days, Menu menu) {
         menu.setName(name);
         menu.setDescription(description);
         menu.setPrice(price);
@@ -57,8 +61,11 @@ public class MenuService {
         menu.setFromValidDate(fromValidDate);
         menu.setToValidDate(toValidDate);
         menu.setFromHour(fromHour);
+        menu.setFromMinute(fromMinute);
         menu.setToHour(toHour);
+        menu.setToMinute(toMinute);
         menu.setRanking(ranking);
+        menu.setDays(days);
         return menuRepository.save(menu);
     }
 
