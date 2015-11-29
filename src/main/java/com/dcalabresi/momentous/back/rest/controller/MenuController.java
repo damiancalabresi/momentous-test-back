@@ -4,7 +4,7 @@ import com.dcalabresi.momentous.back.entity.Menu;
 import com.dcalabresi.momentous.back.rest.dto.MenuDto;
 import com.dcalabresi.momentous.back.rest.dto.PriceDto;
 import com.dcalabresi.momentous.back.rest.dto.RankingDto;
-import com.dcalabresi.momentous.back.service.MenuService;
+import com.dcalabresi.momentous.back.service.menu.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,19 +46,26 @@ public class MenuController {
     public Menu createMenu(@RequestBody @Valid MenuDto menuDto) {
         return menuService.create(menuDto.getName(), menuDto.getDescription(), menuDto.getPrice(),
                 menuDto.getCurrencyId(), menuDto.getFromValidDate(), menuDto.getToValidDate(), menuDto.getFromHour(),
-                menuDto.getFromMinute(), menuDto.getToHour(), menuDto.getToMinute(), menuDto.getRanking(), menuDto.getDays());
+                menuDto.getFromMinute(), menuDto.getToHour(), menuDto.getToMinute(), menuDto.getRanking(),
+                menuDto.getDays(), menuDto.getPictureFile());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Menu editMenu(@PathVariable Long id, @RequestBody @Valid MenuDto menuDto) {
         return menuService.edit(id, menuDto.getName(), menuDto.getDescription(), menuDto.getPrice(),
                 menuDto.getCurrencyId(), menuDto.getFromValidDate(), menuDto.getToValidDate(), menuDto.getFromHour(),
-                menuDto.getFromMinute(), menuDto.getToHour(), menuDto.getToMinute(), menuDto.getRanking(), menuDto.getDays());
+                menuDto.getFromMinute(), menuDto.getToHour(), menuDto.getToMinute(), menuDto.getRanking(),
+                menuDto.getDays(), menuDto.getPictureFile());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteMenu(@PathVariable Long id) {
         menuService.delete(id);
+    }
+
+    @RequestMapping(value = "/pictures", method = RequestMethod.GET)
+    public List<String> getAvailablePictures() {
+        return menuService.getAvailablePictures();
     }
 
 }

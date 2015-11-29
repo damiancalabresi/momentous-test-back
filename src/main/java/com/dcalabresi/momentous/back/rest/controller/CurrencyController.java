@@ -2,7 +2,7 @@ package com.dcalabresi.momentous.back.rest.controller;
 
 import com.dcalabresi.momentous.back.entity.Currency;
 import com.dcalabresi.momentous.back.rest.dto.CurrencyDto;
-import com.dcalabresi.momentous.back.service.CurrencyService;
+import com.dcalabresi.momentous.back.service.currency.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

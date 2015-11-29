@@ -56,12 +56,15 @@ public class Menu {
     @Column(name = "ranking", nullable = false)
     private Float ranking;
 
+    @Column(name="picture_file", nullable = true)
+    private String pictureFile;
+
     public Menu() {
     }
 
     public Menu(String name, String description, Float price, Currency currency, Date fromValidDate,
                 Date toValidDate, List<String> days, Integer fromHour, Integer fromMinute, Integer toHour,
-                Integer toMinute, Float ranking) {
+                Integer toMinute, Float ranking, String pictureFile) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -74,6 +77,7 @@ public class Menu {
         this.toHour = toHour;
         this.toMinute = toMinute;
         this.ranking = ranking;
+        this.pictureFile = pictureFile;
     }
 
     public Long getId() {
@@ -178,6 +182,14 @@ public class Menu {
 
     public void setRanking(Float ranking) {
         this.ranking = ranking;
+    }
+
+    public String getPictureFile() {
+        return pictureFile;
+    }
+
+    public void setPictureFile(String pictureFile) {
+        this.pictureFile = pictureFile;
     }
 
 }

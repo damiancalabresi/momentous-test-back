@@ -47,6 +47,8 @@ public class MenuDto {
     @NotNull(message = "The days list cannot be null")
     private List<String> days;
 
+    private String pictureFile;
+
     public MenuDto() {
     }
 
@@ -146,4 +148,11 @@ public class MenuDto {
         this.days = days;
     }
 
+    public String getPictureFile() {
+        return pictureFile;
+    }
+
+    public void setPictureFile(String pictureFile) {
+        this.pictureFile = pictureFile;
+    }
 }

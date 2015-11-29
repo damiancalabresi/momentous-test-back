@@ -1,4 +1,4 @@
-package com.dcalabresi.momentous.back.service;
+package com.dcalabresi.momentous.back.service.currency;
 
 import com.dcalabresi.momentous.back.entity.Currency;
 import com.dcalabresi.momentous.back.repository.CurrencyRepository;
